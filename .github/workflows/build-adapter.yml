@@ -1,4 +1,4 @@
-name: build container image for container-object-storage-interface-csi-adapte
+name: build cosi adapter container image
 
 on:
   workflow_dispatch:
@@ -6,24 +6,27 @@ on:
   - cron:  '0 0 * * *' # every day at midnight
 
 jobs:
-  docker:
+  build-image:
     runs-on: ubuntu-latest
     steps:
 
-    - name: Checkout kubernetes-sigs/container-object-storage-interface-csi-adapter
-      uses: actions/checkout@v2
-      with:
-        repository: kubernetes-sigs/container-object-storage-interface-csi-adapter
+#     - name: Checkout kubernetes-sigs/container-object-storage-interface-csi-adapter
+#       uses: actions/checkout@v2
+#       with:
+#         repository: kubernetes-sigs/container-object-storage-interface-csi-adapter
+        
+#     - name: Login to Quay.io
+#       uses: docker/login-action@v1
+#       with:
+#         logout: true
+#         registry: quay.io
+#         username: ${{ secrets.QUAY_USERNAME }}
+#         password: ${{ secrets.QUAY_TOKEN }}        
 
-    - name: Build with Gradle
-      run: |
-        ls -al
-        pwd
+#     - name: Build and push the container image
+#       run: |
+#         make clean
+#         make push
+        
 
-    # - name: Login to Quay.io
-    #   uses: docker/login-action@v1
-    #   with:
-    #     logout: true
-    #     registry: quay.io
-    #     username: ${{ secrets.QUAY_USERNAME }}
-    #     password: ${{ secrets.QUAY_TOKEN }}
+
