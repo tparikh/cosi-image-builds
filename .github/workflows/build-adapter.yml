@@ -1,6 +1,7 @@
 name: build container image for container-object-storage-interface-csi-adapte
 
 on:
+  workflow_dispatch:
   schedule:
   - cron:  '0 0 * * *' # every day at midnight
 
